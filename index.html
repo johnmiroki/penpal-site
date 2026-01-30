@@ -3,99 +3,393 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PenPal - Privacy Policy</title>
+    <title>PenPal — GLP-1 Injection & Weight Tracker</title>
+    <meta name="description" content="Track your GLP-1 medication journey. Log injections, monitor weight, visualize medication levels, and get personalized insights.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+            line-height: 1.5;
             color: #1d1d1f;
-            background: #f5f5f7;
-            padding: 20px;
+            background: #000;
+            -webkit-font-smoothing: antialiased;
         }
-        .container {
-            max-width: 680px;
-            margin: 40px auto;
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(180deg, #0a1628 0%, #1a3a5c 50%, #2d6da8 100%);
+            text-align: center;
+            padding: 80px 24px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 50% 80%, rgba(56, 132, 244, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 26px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 28px;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.4);
+        }
+
+        .app-icon svg {
+            width: 64px;
+            height: 64px;
+            fill: white;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        .hero .tagline {
+            font-size: 22px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 520px;
+            margin: 0 auto 36px;
+        }
+
+        .hero .cta-row {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-appstore {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            color: #1d1d1f;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-appstore:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-appstore svg {
+            width: 24px;
+            height: 24px;
+            fill: #1d1d1f;
+        }
+
+        .platforms {
+            margin-top: 20px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Screenshots */
+        .screenshots {
+            background: #000;
+            padding: 80px 24px;
+            overflow: hidden;
+        }
+
+        .screenshots h2 {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .screenshots .subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 48px;
+        }
+
+        .screenshot-row {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .screenshot-row img {
+            width: 280px;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Features */
+        .features {
+            background: #f5f5f7;
+            padding: 80px 24px;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+
+        .features .subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #6e6e73;
+            margin-bottom: 56px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
             background: #fff;
             border-radius: 16px;
-            padding: 48px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            padding: 32px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
         }
-        h1 {
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1d1d1f;
+        }
+
+        .feature-card p {
+            font-size: 15px;
+            color: #6e6e73;
+            line-height: 1.5;
+        }
+
+        .icon-blue { background: rgba(59, 130, 246, 0.12); }
+        .icon-green { background: rgba(34, 197, 94, 0.12); }
+        .icon-purple { background: rgba(147, 51, 234, 0.12); }
+        .icon-orange { background: rgba(249, 115, 22, 0.12); }
+        .icon-pink { background: rgba(236, 72, 153, 0.12); }
+        .icon-teal { background: rgba(20, 184, 166, 0.12); }
+
+        /* Privacy banner */
+        .privacy-banner {
+            background: #1d1d1f;
+            padding: 64px 24px;
+            text-align: center;
+        }
+
+        .privacy-banner h2 {
             font-size: 32px;
             font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .privacy-banner p {
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 560px;
+            margin: 0 auto 8px;
+        }
+
+        .privacy-pills {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+
+        .pill {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 32px 24px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        footer p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
             margin-bottom: 8px;
         }
-        .subtitle {
-            color: #6e6e73;
-            font-size: 17px;
-            margin-bottom: 32px;
+
+        footer a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
         }
-        h2 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-top: 32px;
+
+        footer a:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
             margin-bottom: 12px;
         }
-        p {
-            color: #424245;
-            margin-bottom: 12px;
+
+        .footer-links a { font-size: 13px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { padding: 60px 20px 48px; }
+            .hero h1 { font-size: 36px; }
+            .hero .tagline { font-size: 18px; }
+            .screenshots h2, .features h2 { font-size: 28px; }
+            .screenshot-row img { width: 220px; }
+            .privacy-banner h2 { font-size: 24px; }
         }
-        ul {
-            color: #424245;
-            padding-left: 20px;
-            margin-bottom: 12px;
-        }
-        li { margin-bottom: 6px; }
-        .emphasis { font-weight: 500; }
-        .updated {
-            color: #86868b;
-            font-size: 13px;
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #e5e5e5;
-        }
-        @media (max-width: 600px) {
-            .container { padding: 24px; margin: 16px auto; }
-            h1 { font-size: 26px; }
+
+        @media (max-width: 480px) {
+            .screenshot-row img { width: 85%; }
+            .feature-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Privacy Policy</h1>
-        <p class="subtitle">Your privacy matters. PenPal is designed with privacy at its core.</p>
 
-        <h2>Data We Collect</h2>
-        <ul>
-            <li>Weight measurements you enter or import from Apple Health</li>
-            <li>Injection records including date, dose, and site location</li>
-            <li>Profile information: height, target weight, biological sex</li>
-            <li>Medication preferences and schedules</li>
-        </ul>
+    <section class="hero">
+        <div class="app-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.15 15.18c.39-.4.39-1.03 0-1.42-.39-.39-1.03-.39-1.42 0l-3.54 3.54c-.39.39-.39 1.02 0 1.41.39.4 1.02.4 1.41 0l3.55-3.53zM9.71 6.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L11.59 11H3c-.55 0-1 .45-1 1s.45 1 1 1h8.59l-3.29 3.29c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l4-4c.39-.39.39-1.02 0-1.41l-4-4.01z" fill="none"/>
+                <path d="M19.5 2h-7C11.12 2 10 3.12 10 4.5v1C10 6.33 10.67 7 11.5 7S13 6.33 13 5.5V5h6v14h-6v-.5c0-.83-.67-1.5-1.5-1.5S10 17.67 10 18.5v1C10 20.88 11.12 22 12.5 22h7c1.38 0 2.5-1.12 2.5-2.5v-15C22 3.12 20.88 2 19.5 2z"/>
+                <circle cx="6" cy="12" r="1.5"/>
+            </svg>
+        </div>
+        <h1>PenPal</h1>
+        <p class="tagline">Your personal GLP-1 medication companion. Track injections, monitor weight, see if it's working.</p>
+        <div class="cta-row">
+            <a href="#" class="btn-appstore">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                Download on the App Store
+            </a>
+        </div>
+        <p class="platforms">iPhone &middot; iPad &middot; Mac &middot; Apple Vision Pro</p>
+    </section>
 
-        <h2>How Your Data Is Stored</h2>
-        <p>All your data is stored locally on your device using Apple's Core Data framework. If you enable iCloud sync, your data is also stored in your personal iCloud account using Apple's CloudKit service.</p>
-        <p class="emphasis">We do not have access to your data. Your health information never leaves your device or your personal iCloud account.</p>
+    <section class="screenshots">
+        <h2>See it in action</h2>
+        <p class="subtitle">Dashboard, injection tracking, and smart insights — at a glance.</p>
+        <div class="screenshot-row">
+            <img src="screenshots/dashboard.png" alt="PenPal dashboard showing next injection, weight progress, and BMI" loading="lazy">
+            <img src="screenshots/injections.png" alt="Injection history with doses, sites, and medication details" loading="lazy">
+            <img src="screenshots/insights.png" alt="Insights view with charts, trends, and goal projections" loading="lazy">
+        </div>
+    </section>
 
-        <h2>Apple Health Integration</h2>
-        <p>If you grant permission, PenPal can read your height and weight data from Apple Health, and write weight entries back to Apple Health. This data transfer happens entirely on your device — we cannot see or access your HealthKit data.</p>
+    <section class="features">
+        <h2>Everything you need</h2>
+        <p class="subtitle">Built for people using Ozempic, Wegovy, Mounjaro, and Zepbound.</p>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon icon-blue">💉</div>
+                <h3>Injection Tracking</h3>
+                <p>Log every dose with date, time, site, and medication. Smart reminders so you never miss one.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon icon-green">⚖️</div>
+                <h3>Weight Management</h3>
+                <p>Quick-entry logging, goal tracking, trend analysis, and healthy rate guidance. Metric or imperial.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon icon-purple">📊</div>
+                <h3>Smart Insights</h3>
+                <p>Goal projections, plateau detection, dose suggestions, and personalized progress updates.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon icon-orange">🧬</div>
+                <h3>Medication Science</h3>
+                <p>Visualize residual medication levels with pharmacokinetics charts. Track half-life decay and steady state.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon icon-pink">❤️</div>
+                <h3>Apple Health</h3>
+                <p>Import weight automatically. Export entries back to Health. Background sync keeps everything current.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon icon-teal">☁️</div>
+                <h3>iCloud Sync</h3>
+                <p>Your data follows you across iPhone, iPad, Mac, and Vision Pro. Encrypted by Apple. Or stay local-only.</p>
+            </div>
+        </div>
+    </section>
 
-        <h2>Data Sharing</h2>
-        <p>PenPal does not share your data with any third parties. We do not use analytics services, advertising networks, or any external data processors.</p>
+    <section class="privacy-banner">
+        <h2>Private by design</h2>
+        <p>Your health data stays yours. We never see it, never share it, never sell it.</p>
+        <div class="privacy-pills">
+            <span class="pill">On-device processing</span>
+            <span class="pill">No analytics</span>
+            <span class="pill">No ads</span>
+            <span class="pill">No tracking</span>
+            <span class="pill">iCloud encrypted</span>
+        </div>
+    </section>
 
-        <h2>Data Deletion</h2>
-        <p>You can delete all your data at any time from the Profile tab. When you delete data with iCloud sync enabled, it will also be removed from iCloud.</p>
+    <footer>
+        <div class="footer-links">
+            <a href="privacy_policy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="mailto:privacy@penpal-app.com">Contact</a>
+        </div>
+        <p>&copy; 2026 PenPal. All rights reserved.</p>
+        <p>PenPal is a tracking tool, not medical advice. Ozempic and Wegovy are trademarks of Novo Nordisk. Mounjaro and Zepbound are trademarks of Eli Lilly.</p>
+    </footer>
 
-        <h2>Data Retention</h2>
-        <p>PenPal retains your data for as long as you keep the app installed. There is no automatic expiration or deletion of your health records. Your injection history, weight entries, and profile information remain on your device (and in your iCloud account if sync is enabled) until you choose to delete them.</p>
-        <p>If you delete the app, locally stored data is removed with it. iCloud data may persist in your iCloud account until you manually delete it or disable iCloud sync before uninstalling.</p>
-
-        <h2>Contact</h2>
-        <p>For questions about this privacy policy, contact us at privacy@penpal-app.com</p>
-
-        <p class="updated">Last updated: January 2026</p>
-    </div>
 </body>
 </html>
